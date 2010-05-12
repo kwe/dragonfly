@@ -15,7 +15,7 @@ module Dragonfly
         grid = Mongo::Grid.new(db)
 
         # returns object id
-        id = grid.put(File.read(temp_object.path))
+        id = grid.put(File.read(temp_object.path), :filename => temp_object.basename)
         id
       end
 
