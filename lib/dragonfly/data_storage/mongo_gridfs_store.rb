@@ -22,7 +22,7 @@ module Dragonfly
       def retrieve(uid)
         db = Mongo::Connection.new.db(grid_fs_database)
         grid = Mongo::Grid.new(db)
-        file = grid.get(Mongo::ObjectID.from_string(uid))
+        file = grid.get(uid)
         file.read
       end
       
