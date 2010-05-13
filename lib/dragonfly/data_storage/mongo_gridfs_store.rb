@@ -16,13 +16,13 @@ module Dragonfly
 
         # returns object id
         id = grid.put(File.read(temp_object.path), :filename => temp_object.basename)
-        id
+        id.to_s
       end
 
       def retrieve(uid)
         db = Mongo::Connection.new.db(grid_fs_database)
         grid = Mongo::Grid.new(db)
-        file = grid.get(uid)
+        file = grid.get(BSON::ObjectID.from_string(uid))
         file.read
       end
       
