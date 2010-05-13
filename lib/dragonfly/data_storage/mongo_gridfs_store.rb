@@ -29,7 +29,7 @@ module Dragonfly
       def destroy(uid)
         db = Mongo::Connection.new.db(grid_fs_database)
         grid = Mongo::Grid.new(db)
-        grid.delete(Mongo::ObjectID.from_string(uid))
+        grid.delete(BSON::ObjectID.from_string(uid))
       end
     end
   end
